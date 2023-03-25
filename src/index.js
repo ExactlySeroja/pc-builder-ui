@@ -1,17 +1,46 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { createBrowserRouter, createRoutesFromChildren, Navigate, Route, RouterProvider } from 'react-router-dom';
+import { TopBar } from './views/TopBar';
+import { ComponentView } from './views/ComponentsView';
+import { MotherboardView } from './views/MotherboardView';
+import { GpuView } from './views/GpuView';
+import { CpuView } from './views/CpuView';
+import { RamView } from './views/RamView';
+import { CaseView } from './views/CaseView';
+import { PowerUnitView } from './views/PowerUnitView';
+import { DriveView } from './views/DriveView';
+import { AssembledView } from './views/AssembledView';
+import { MainView } from './views/MainView';
+import { BuilderView } from './views/BuilderView';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+
+const router = createBrowserRouter(
+  createRoutesFromChildren(
+    <>
+      <Route path="/" Component={TopBar}>
+        <Route path='main' Component={MainView} />
+        <Route path='components' Component={ComponentView}>
+          <Route path='motherboard' Component={MotherboardView} />
+          <Route path='gpu' Component={GpuView} />
+          <Route path='cpu' Component={CpuView} />
+          <Route path='ram' Component={RamView} />
+          <Route path='case' Component={CaseView} />
+          <Route path='power-unit' Component={PowerUnitView} />
+          <Route path='drive' Component={DriveView} />
+        </Route>
+        <Route path='assembled' Component={AssembledView} />
+        <Route path='builder' Component={BuilderView} />
+      </Route>
+      <Route path="*" element={<Navigate to="/main" replace />} />
+    </>
+  ));
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+

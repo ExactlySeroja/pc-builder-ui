@@ -5,9 +5,28 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #021C1E;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.shadow {
+  background-color: #004445;
+  box-shadow: 0px 30px 40px rgba(21, 21, 21, 0.1);
+}
+
+
+.btn-greenary {
+  background-color: #6FB98F;
+}
+.btn-rain{
+  background-color: #2C7873;
+}
+
+.vh-75{
+  height: 75vh;
 }
