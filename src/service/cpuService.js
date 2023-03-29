@@ -25,6 +25,7 @@ const createCpu = async (name, price, socket) => {
 
 const updateCpu = async (cpuId, name, price, socket) => {
     const { data } = await $host.put(`components/cpu/${cpuId}`, {
+        cpuId,
         name,
         price,
         socket

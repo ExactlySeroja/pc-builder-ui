@@ -5,8 +5,8 @@ const getCase = async () => {
     return data
 }
 
-const getCaseById = async (caseId) =>{
-    const{data} = await $host.get(`components/cases/${caseId}`)
+const getCaseById = async (pcCaseId) =>{
+    const{data} = await $host.get(`components/cases/${pcCaseId}`)
     return data
 }
 
@@ -22,16 +22,16 @@ const createCase = async (name, price) => {
     }
 }
 
-const updateCase = async (caseId, name, price) => {
-    const { data } = await $host.put(`components/cases/${caseId}`, {
+const updateCase = async (pcCaseId, name, price) => {
+    const { data } = await $host.put(`components/cases/${pcCaseId}`, {
         name,
         price,
     })
     return data
 }
 
-const deleteCase = async (caseId) => {
-    const { data } = await $host.delete(`components/cases/${caseId}`)
+const deleteCase = async (pcCaseId) => {
+    const { data } = await $host.delete(`components/cases/${pcCaseId}`)
     return data
 }
 

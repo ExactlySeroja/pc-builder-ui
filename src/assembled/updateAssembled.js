@@ -5,7 +5,7 @@ import { assembledService } from '../service/assembledService';
 
 
 const UpdateAssembledModal = ({ assembledId, show, setShow, apiData, setApiData }) => {
-  const [caseId, setCaseId] = useState('');
+  const [pcCaseId, setPcCaseId] = useState('');
   const [cpuId, setCpuId] = useState('');
   const [gpuId, setGpuId] = useState('');
   const [motherboardId, setMotherboardId] = useState('');
@@ -18,10 +18,10 @@ const UpdateAssembledModal = ({ assembledId, show, setShow, apiData, setApiData 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleSubmit = () => {
-    assembledService.updateAssembled(assembledId, caseId, cpuId, gpuId, motherboardId, powerUnitId, ramId, driveId, ramAmount, drivesAmount).then(() => {
+    assembledService.updateAssembled(assembledId, pcCaseId, cpuId, gpuId, motherboardId, powerUnitId, ramId, driveId, ramAmount, drivesAmount).then(() => {
       setApiData(apiData.map((item) =>
         item.id === assembledId
-          ? { ...item, caseId, cpuId, gpuId, motherboardId, powerUnitId, ramId, driveId, ramAmount, drivesAmount }
+          ? { ...item, pcCaseId, cpuId, gpuId, motherboardId, powerUnitId, ramId, driveId, ramAmount, drivesAmount }
           : item
       ));
       handleClose()
@@ -41,12 +41,12 @@ const UpdateAssembledModal = ({ assembledId, show, setShow, apiData, setApiData 
 
           <Form>
 
-            <Form.Group className="mb-3" controlId="caseId">
+            <Form.Group className="mb-3" controlId="pcCaseId">
               <Form.Label>caseId</Form.Label>
-              <Form.Control type="caseId" name="caseId"
-                value={caseId}
+              <Form.Control type="number" name="caseId"
+                value={pcCaseId}
                 placeholder='caseId'
-                onChange={(e) => setCaseId(e.target.value)} />
+                onChange={(e) => setPcCaseId(Number(e.target.value))} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="cpuId">
@@ -54,7 +54,7 @@ const UpdateAssembledModal = ({ assembledId, show, setShow, apiData, setApiData 
               <Form.Control type="number" name="cpuId"
                 value={cpuId}
                 placeholder='cpuId'
-                onChange={(e) => setCpuId(e.target.value)} />
+                onChange={(e) => setCpuId(Number(e.target.value))} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="gpuId">
@@ -62,7 +62,7 @@ const UpdateAssembledModal = ({ assembledId, show, setShow, apiData, setApiData 
               <Form.Control type="number" name="gpuId"
                 value={gpuId}
                 placeholder='gpuId'
-                onChange={(e) => setGpuId(e.target.value)} />
+                onChange={(e) => setGpuId(Number(e.target.value))} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="motherboardId">
@@ -70,7 +70,7 @@ const UpdateAssembledModal = ({ assembledId, show, setShow, apiData, setApiData 
               <Form.Control type="number" name="motherboardId"
                 value={motherboardId}
                 placeholder='motherboardId'
-                onChange={(e) => setMotherboardId(e.target.value)} />
+                onChange={(e) => setMotherboardId(Number(e.target.value))} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="powerUnitId">
@@ -78,7 +78,7 @@ const UpdateAssembledModal = ({ assembledId, show, setShow, apiData, setApiData 
               <Form.Control type="number" name="powerUnitId"
                 value={powerUnitId}
                 placeholder='powerUnitId'
-                onChange={(e) => setPowerUnitId(e.target.value)} />
+                onChange={(e) => setPowerUnitId(Number(e.target.value))} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="ramId">
@@ -86,7 +86,7 @@ const UpdateAssembledModal = ({ assembledId, show, setShow, apiData, setApiData 
               <Form.Control type="number" name="ramId"
                 value={ramId}
                 placeholder='ramId'
-                onChange={(e) => setRamId(e.target.value)} />
+                onChange={(e) => setRamId(Number(e.target.value))} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="driveId">
@@ -94,7 +94,7 @@ const UpdateAssembledModal = ({ assembledId, show, setShow, apiData, setApiData 
               <Form.Control type="number" name="driveId"
                 value={driveId}
                 placeholder='driveId'
-                onChange={(e) => setDriveId(e.target.value)} />
+                onChange={(e) => setDriveId(Number(e.target.value))} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="ramAmount">
@@ -102,14 +102,14 @@ const UpdateAssembledModal = ({ assembledId, show, setShow, apiData, setApiData 
               <Form.Control type="number" name="ramAmount"
                 value={ramAmount}
                 placeholder='ramAmount'
-                onChange={(e) => setRamAmount(e.target.value)} />
+                onChange={(e) => setRamAmount(Number(e.target.value))} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="drivesAmount">
               <Form.Label>drivesAmount</Form.Label>
               <Form.Control type="number" name="drivesAmount"
                 value={drivesAmount}
                 placeholder='drivesAmount'
-                onChange={(e) => setDrivesAmount(e.target.value)} />
+                onChange={(e) => setDrivesAmount(Number(e.target.value))} />
             </Form.Group>
           </Form>
 

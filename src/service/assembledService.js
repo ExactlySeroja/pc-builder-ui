@@ -5,10 +5,15 @@ const getAssembled = async () => {
     return data
 }
 
-const createAssebmbled = async (caseId, cpuId, gpuId, motherboardId, powerUnitId, ramId, driveId, ramAmount, drivesAmount) => {
+const getTotalPriceById= async (assembledId) =>{
+    const {data} = await $host.get(`/assembled/${assembledId}/price`)
+    return data
+}
+
+const createAssebmbled = async (pcCaseId, cpuId, gpuId, motherboardId, powerUnitId, ramId, driveId, ramAmount, drivesAmount) => {
     try {
         const { data } = await $host.post("/assembled", {
-            caseId,
+            pcCaseId,
             cpuId, 
             gpuId,
             motherboardId, 
@@ -24,9 +29,9 @@ const createAssebmbled = async (caseId, cpuId, gpuId, motherboardId, powerUnitId
     }
 }
 
-const updateAssembled = async (id, caseId, cpuId, gpuId, motherboardId, powerUnitId, ramId, driveId, ramAmount, drivesAmount) => {
+const updateAssembled = async (id, pcCaseId, cpuId, gpuId, motherboardId, powerUnitId, ramId, driveId, ramAmount, drivesAmount) => {
     const { data } = await $host.put(`/assembled/${id}`, {
-            caseId,
+            pcCaseId,
             cpuId, 
             gpuId,
             motherboardId, 
@@ -48,5 +53,6 @@ export const assembledService = {
     getAssembled,
     createAssebmbled,
     updateAssembled,
-    deleteAssembled
+    deleteAssembled,
+    getTotalPriceById
 };

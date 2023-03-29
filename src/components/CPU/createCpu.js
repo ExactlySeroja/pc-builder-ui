@@ -44,6 +44,8 @@ const CreateCpuModal = ({ show, setShow, apiData, setApiData }) => {
               <Form.Label>Price</Form.Label>
               <Form.Control type="number" name="price"
                 value={price}
+                min={1} 
+                step={1}
                 placeholder='Price'
                 onChange={(e) => setPrice(e.target.value)} />
             </Form.Group>

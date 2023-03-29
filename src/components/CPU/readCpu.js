@@ -31,10 +31,12 @@ export default function ReadCpu({ apiData, setApiData, showUpdateModal, setShowU
                 <Row className="g-3">
                     {apiData.map((data) => (
                         <Col md={4} key={data.id}>
+                            {console.log(data.id)}
                             <div className="rounded p-3 text-white shadow mb-3">
-                                <h4>name: {data.name}</h4>
-                                <h4>price: {data.price}</h4>                               
-                                <h4>socket: {data.socket}</h4>                               
+                                <h4>ID: {data.id}</h4>
+                                <h4>Name: {data.name}</h4>
+                                <h4>Price: {data.price}</h4>                               
+                                <h4>Socket: {data.socket}</h4>                               
                                 <hr />
                                 <div className="d-flex justify-content-between">
                                     <Button className="btn-success" onClick={() => handleUpdateClick(data.id)}>
